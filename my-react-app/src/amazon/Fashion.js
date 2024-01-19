@@ -39,6 +39,13 @@ export default function Fashion() {
           <div key={item.id} className="item" onClick={() => onItemClick(item)}>
             <img src={item.image} alt={item.title} />
             <p>{item.title}</p>
+            <div className="product__rating">
+              {Array(item.rating)
+                .fill()
+                .map((_, i) => (
+                  <p>🌟</p>
+                ))}
+            </div>
             <p>Price: ₹{item.Price}</p>
           </div>
         ))}

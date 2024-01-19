@@ -6,30 +6,47 @@ import Mobiles from "./amazon/Mobiles";
 import Fashion from "./amazon/Fashion";
 import ItemDetails from "./amazon/ItemDetails";
 import Cart from "./amazon/Cart";
-/* import Table from './Pages/Table';
+import Table from './Pages/Table';
 import Layout from './Pages/Layout';
 import EmployeeForm from './Pages/EmployeeForm';
 import Contact from './Pages/Contact';
 import Apicalling  from './Pages/Apicalling';
-import Home from './Pages/Home'; */
+//import Home from './Pages/Home'; 
+import TestWithMockData from "./components/TestWithMockData";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Checkout from "./amazon/Checkout";
-// import Nav from "./amazon/Nav";
-import Header from "./amazon/Header";
 import Login from "./amazon/Login";
-// import Capture from "./Capture.PNG";
-/* import Parentcom from './components/Parentcom'; */
-/* import Homework from './components/Homework' */
-
+import Nav from "./amazon/Nav";
+import Header from "./amazon/Header";
+import { useCart } from "./amazon/CartProvider";
+ import Capture from "./Capture.PNG";
+ import Parentcom from './components/Parentcom'; 
+ import Homework from './components/Homework' 
+import Basic from "./components/Basic";
+import Demo from "./components/Demo";
 const App = () => {
+  const { login } = useCart();
+  console.log(login, "28");
   return (
-    <Router>
+    // <Router>
       <div className="App">
-        {/* <img src={Capture} className="logo" alt="logo" /> */}
-        <Header />
-        {/* <Nav /> */}
-        {/*  <Homework /> */}
+        <img src={Capture} className="logo" alt="logo" /> 
+        <Basic/>
+        <TestWithMockData/>
+        <Demo/>
+        {/* {login ? (
+          <>
+            <Header />
+            {/* <Routes>
+              <Route path="Login" element={<Login />} />
+            </Routes> */}
+        {/* </>
+        ) : null} */}
+        <test />
+        {/* <Header />
+        <Nav />
+         <Homework />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="Grocery" element={<Grocery />} />
@@ -39,7 +56,7 @@ const App = () => {
           <Route path="Cart" element={<Cart />} />
           <Route path="Checkout" element={<Checkout />} />
           <Route path="Login" element={<Login />} />
-        </Routes>
+        </Routes> */}
         {/*  <BrowserRouter>
     <Routes>
       <Route path='/' element={<Layout />}>
@@ -50,11 +67,11 @@ const App = () => {
       <Route path='Contact' element={<Contact />}/>
       </Route>
     </Routes>
-    </BrowserRouter> */}
+    </BrowserRouter>
 
         {/*    <Parentcom />  */}
       </div>
-    </Router>
+   
   );
 };
 export default App;

@@ -29,6 +29,11 @@ const Checkout = () => {
     let filterData = checkoutItems.filter((items) => items.id !== id);
     setCheckoutItems(filterData);
   };
+
+  const handleDeleteOp = (id) => {
+    let filterData = checkoutItems.filter((items) => items.id !== id);
+    setCheckoutItems(filterData);
+  };
   const handleQuantityChange = (id, newQuantity) => {
     let check = checkoutItems.map((item) => {
       if (item.id === id) {
@@ -36,7 +41,7 @@ const Checkout = () => {
         if (maxQuantity === 0 && newQuantity > 0) {
           return null;
         } else {
-          return { ...item, Qty: newQuantity };
+          return { ...item, Qty: Number(newQuantity) };
         }
       }
       return item;
@@ -80,6 +85,7 @@ const Checkout = () => {
                     ))}
                   </select>
                 </label>
+                {item.Qty === 0 ? handleDeleteOp(item.id) : null}
 
                 <button onClick={() => handleDelete(item.id)}>
                   {" "}

@@ -8,10 +8,24 @@
   z-index: 100;
 }
 
+.header__a a {
+  text-decoration: none;
+  color: white;
+  margin: 10px;
+  font-weight: 400;
+}
+
+.header__a a:hover {
+  border: 1px solid;
+  border-radius: 2px;
+  margin: 0;
+  padding: 12px 8px 13px 8px;
+}
+
 .header__logo {
   width: 100px;
   object-fit: contain;
-  margin: 0 20px;
+  margin: 0 0 0 20px;
   margin-top: 18px;
 }
 
@@ -35,8 +49,8 @@
   background-color: #cd9042;
 }
 
-*:not(.classname){
-  box-sizing : content-box;
+*:not(.classname) {
+  box-sizing: content-box;
 }
 
 .header__optionLineOne {
@@ -70,6 +84,22 @@
   margin-left: 10px;
   margin-right: 10px;
   color: white;
+}
+
+ /* a.header__option :hover {
+  border: 1px solid;
+  border-radius: 2px;
+  margin: 0;
+  padding: 12px 8px 13px 8px;
+} */
+
+.Cart :hover {
+  border: 1px solid;
+}
+
+.header__option a {
+  color: white;
+  text-decoration: none;
 }
 
 .home__row {

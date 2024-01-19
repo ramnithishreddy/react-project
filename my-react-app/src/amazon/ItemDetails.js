@@ -41,6 +41,13 @@ const ItemDetails = () => {
         </div>
         <div className="col-md-6">
           <h2>{item.title}</h2>
+          <div className="product__rating">
+            {Array(item.rating)
+              .fill()
+              .map((_, i) => (
+                <p>🌟</p>
+              ))}
+          </div>
           <h4>Price: ₹{item.Price}/-</h4>
           <label>
             Qty:

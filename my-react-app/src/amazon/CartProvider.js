@@ -6,14 +6,13 @@ const CartContext = createContext();
 export default function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [checkoutItems, setCheckoutItems] = useState([]);
+  console.log(checkoutItems,"9")
   const [currentQuantity, setCurrentQuantity] = useState(Number(0));
   const [sortedData, setSortedData] = useState(data.Grocery);
   const [first, setFirst] = useState("");
   const [updatedcartItems, setUpdatedCartItems] = useState([]);
   const [success, setsuccess] = useState(false);
-  console.log(success, "14");
-  console.log(updatedcartItems, "13");
-  console.log(cartItems, "1212");
+  const [login, setLogin] = useState(false);
 
   // const addToCart = (item) => {
   //   // if (item.length > 0) {
@@ -64,18 +63,15 @@ export default function CartProvider({ children }) {
     if (index !== -1) {
       if (first.length > 0 && updatedcartItems.length > 0) {
         Qtycount = (first[index]?.Qty || 0) + Number(item.Qty);
-        console.log(first, Qtycount, "67");
         if (Qtycount <= item.TQty) {
           const updatedItems = [...updatedcartItems];
           updatedItems[index].Qty = Qtycount;
           setUpdatedCartItems(updatedItems);
-          console.log(updatedcartItems, "69");
         }
       }
       if (Qtycount > item.TQty) {
         alert("item is out of stock");
         setCartItems(first);
-        console.log(first, "73");
       }
     } else {
       setCartItems([...cartItems, { ...item }]);
@@ -97,10 +93,7 @@ export default function CartProvider({ children }) {
       setUpdatedCartItems([]);
       setsuccess(false);
     }
-
-    console.log(first, updatedcartItems, cartItems, "36");
   };
-  console.log(first, updatedcartItems, cartItems, "104");
 
   const updateCartItems = (items, itemId) => {
     const updatedItems = items.map((item) =>
@@ -113,6 +106,7 @@ export default function CartProvider({ children }) {
     const existingItem = checkoutItems.find(
       (checkoutItem) => checkoutItem.id === item.id
     );
+    console.log(existingItem,"108")
     if (existingItem) {
       setCheckoutItems((prevItems) =>
         prevItems.map((checkoutItem) =>
@@ -148,11 +142,13 @@ export default function CartProvider({ children }) {
       value={{
         cartItems,
         checkoutItems,
+        login,
         setsuccess,
         buyNow,
         addToCart,
         updateCartItems,
         calculateTotal,
+        setLogin,
         setCartItems,
         setCheckoutItems,
         handleLowToHigh,

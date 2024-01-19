@@ -34,13 +34,16 @@ function Header() {
   };
   return (
     <div className="header">
-      <Link to="/">
-        <img
-          className="header__logo"
-          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
-          alt="header-logo"
-        />
-      </Link>
+      <div className="header__a">
+        <Link to="/">
+          <img
+            className="header__logo"
+            src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+            alt="header-logo"
+          />
+          .in
+        </Link>
+      </div>
 
       <div className="header__search">
         <input
@@ -62,11 +65,12 @@ function Header() {
       {/* <div className="search-container"></div> */}
 
       <div className="header__nav">
-        <div className="header__option">
+        {/* <div> */}
+        <Link to="/Login" className="header__option">
           <span className="header__optionLineOne">Hello Guest</span>
           <span className="header__optionLineTwo">Sign In</span>
-        </div>
-
+        </Link>
+        {/* </div> */}
         <div className="header__option">
           <span className="header__optionLineOne">Returns</span>
           <span className="header__optionLineTwo">& Orders</span>
@@ -77,33 +81,36 @@ function Header() {
           <span className="header__optionLineTwo">Prime</span>
         </div>
 
-        <Link to="/Cart">
-          <div className="header__optionBasket">
-            <ShoppingCartIcon />
-            <span className="header__optionLineTwo header__basketCount">
-              {cartItems?.length}
-            </span>
-          </div>
-        </Link>
+        <div className="Cart">
+          <Link to="/Cart">
+            <div className="header__optionBasket">
+              <ShoppingCartIcon />
+              <span className="header__optionLineTwo header__basketCount">
+                {cartItems?.length}
+              </span>
+            </div>
+          </Link>
+        </div>
       </div>
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link className="nav-link" to="/Grocery">
-              Grocery
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/Mobiles">
-              Mobiles
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/Fashion">
-              Fashion
-            </Link>
-          </li>
-          {/* <li className="nav-item">
+      <div className="header__nav">
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <div className="navbar-nav">
+            <div className="nav-item">
+              <Link className="nav-link" to="/Grocery">
+                Grocery
+              </Link>
+            </div>
+            <div className="nav-item">
+              <Link className="nav-link" to="/Mobiles">
+                Mobiles
+              </Link>
+            </div>
+            <div className="nav-item">
+              <Link className="nav-link" to="/Fashion">
+                Fashion
+              </Link>
+            </div>
+            {/* <li className="nav-item">
             <Link className="nav-link" to="/Cart">
               {cartItems.length > 0 ? (
                 <>
@@ -123,7 +130,8 @@ function Header() {
               <span className="CartIcon"></span>
             </Link>
           </li> */}
-        </ul>
+          </div>
+        </div>
       </div>
     </div>
   );

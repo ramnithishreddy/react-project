@@ -4,7 +4,6 @@ import data from "./data.json";
 
 export default function Home() {
   const navigate = useNavigate();
-  // const [searchInput, setSearchInput] = useState("");
   const [suggestions, setSuggestions] = useState([]);
 
   const onItemClick = (item) => {
@@ -12,81 +11,99 @@ export default function Home() {
     item = { ...item, Qty: Number(item.Qty) === 0 ? +1 : Number(item.Qty) };
     navigate(`/ItemDetails`, { state: item });
   };
-  // const handleInputChange = (event) => {
-  //   const inputValue = event.target.value;
-  //   setSearchInput(inputValue);
-  //   const filteredSuggestions = Object.keys(data)
-  //     .flatMap((category) => data[category])
-  //     .filter((item) =>
-  //       item.title.toLowerCase().includes(inputValue.toLowerCase())
-  //     );
-  //   if (inputValue.length > 0) {
-  //     setSuggestions(filteredSuggestions);
-  //   } else setSuggestions([]);
-  // };
   return (
-    <div>
-      {/* <div className="search-container">
-        <input
-          type="text"
-          placeholder="Search for items..."
-          value={searchInput}
-          onChange={handleInputChange}
+    <div className="home">
+      <div className="home__container">
+        <img
+          className="home__image"
+          src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg"
+          alt=""
         />
-        <ul className="suggestions">
-          {suggestions.map((item) => (
-            <li key={item.id} onClick={() => onItemClick(item)}>
-              {item.title}
-            </li>
-          ))}
-        </ul>
-      </div> */}
-      {/* <div className="Style">
-        {Object.keys(data).map((category) =>
-          data[category].map((item) => (
-            <div
-              key={item.id}
-              className="item"
-              onClick={() => onItemClick(item)}
-            >
-            {data[category] === Grocery || Mobiles || Fashion ? 
-              {"           "}
-              :
-              null
-            }
-              <img src={item.image} alt={item.title} />
-              <p>{item.title}</p>
-              <p>Price: ₹{item.Price}</p>
+
+        <div className="home__row">
+          <div>
+            <div className="Style">
+              {data.Grocery.map((item) => (
+                <div
+                  key={item.id}
+                  className="item"
+                  onClick={() => onItemClick(item)}
+                >
+                  <img src={item.image} alt={item.title} />
+                  <p>{item.title}</p>
+                  <div className="product__rating">
+                    {Array(item.rating)
+                      .fill()
+                      .map((_, i) => (
+                        <p>🌟</p>
+                      ))}
+                  </div>
+                  <p>Price: ₹{item.Price}</p>
+                </div>
+              ))}
             </div>
-          ))
-        )}
-      </div> */}
-      <div className="Style">
-        {data.Grocery.map((item) => (
-          <div key={item.id} className="item" onClick={() => onItemClick(item)}>
-            <img src={item.image} alt={item.title} />
-            <p>{item.title}</p>
-            <p>Price: ₹{item.Price}</p>
+            <div className="Style">
+              {data.Mobiles.map((item) => (
+                <div
+                  key={item.id}
+                  className="item"
+                  onClick={() => onItemClick(item)}
+                >
+                  <img src={item.image} alt={item.title} />
+                  <p>{item.title}</p>
+                  <div className="product__rating">
+                    {Array(item.rating)
+                      .fill()
+                      .map((_, i) => (
+                        <p>🌟</p>
+                      ))}
+                  </div>
+                  <p>Price: ₹{item.Price}</p>
+                </div>
+              ))}
+            </div>
+            <div className="Style">
+              {data.Fashion.map((item) => (
+                <div
+                  key={item.id}
+                  className="item"
+                  onClick={() => onItemClick(item)}
+                >
+                  <img src={item.image} alt={item.title} />
+                  <p>{item.title}</p>
+                  <div className="product__rating">
+                    {Array(item.rating)
+                      .fill()
+                      .map((_, i) => (
+                        <p>🌟</p>
+                      ))}
+                  </div>
+                  <p>Price: ₹{item.Price}</p>
+                </div>
+              ))}
+            </div>
+            <div className="Style">
+              {data["T.V's & Appliances"].map((item) => (
+                <div
+                  key={item.id}
+                  className="item"
+                  onClick={() => onItemClick(item)}
+                >
+                  <img src={item.image} alt={item.title} />
+                  <p>{item.title}</p>
+                  <div className="product__rating">
+                    {Array(item.rating)
+                      .fill()
+                      .map((_, i) => (
+                        <p>🌟</p>
+                      ))}
+                  </div>
+                  <p>Price: ₹{item.Price}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        ))}
-      </div>
-      <div className="Style">
-        {data.Mobiles.map((item) => (
-          <div key={item.id} className="item" onClick={() => onItemClick(item)}>
-            <img src={item.image} alt={item.title} />
-            <p>{item.title}</p>
-            <p>Price: ₹{item.Price}</p>
-          </div>
-        ))}
-      </div>
-      <div className="Style">
-        {data.Fashion.map((item) => (
-          <div key={item.id} className="item" onClick={() => onItemClick(item)}>
-            <img src={item.image} alt={item.title} />
-            <p>{item.title}</p>
-            <p>Price: ₹{item.Price}</p>
-          </div>
-        ))}
+        </div>
       </div>
     </div>
   );

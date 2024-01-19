@@ -29,6 +29,11 @@ const Cart = () => {
     setCartItems(filteredCartItems);
   };
 
+  const handleDeleteOp = (id) => {
+    let filterData = cartItems.filter((items) => items.id !== id);
+    setCartItems(filterData);
+  };
+
   const handleQuantityChangeC = (id, newQuantity) => {
     const updatedCartItems = cartItems.map((item) =>
       item.id === id
@@ -72,6 +77,8 @@ const Cart = () => {
                     ))}
                   </select>
                 </label>
+                {item.Qty === 0 ? handleDeleteOp(item.id) : null}
+
                 <button onClick={() => handleDeleteC(item.id)}>
                   {" "}
                   <DeleteIcon />{" "}
