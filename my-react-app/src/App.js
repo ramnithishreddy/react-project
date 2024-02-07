@@ -27,7 +27,6 @@ import { useCart } from "./amazon/CartProvider";
 // import Demo from "./components/Demo";
 const App = () => {
   const { login } = useCart();
-  console.log(login, "28");
   return (
     // <Router>
     <div className="App">
