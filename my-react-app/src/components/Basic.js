@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Basic = ({data, displayList}) => {
-    console.log(data,displayList,'4::')
   return (
     <div> <h1>Testing Example</h1>
        { displayList ?
