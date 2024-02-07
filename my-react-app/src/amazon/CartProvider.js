@@ -6,7 +6,6 @@ const CartContext = createContext();
 export default function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
   const [checkoutItems, setCheckoutItems] = useState([]);
-  console.log(checkoutItems,"9")
   const [currentQuantity, setCurrentQuantity] = useState(Number(0));
   const [sortedData, setSortedData] = useState(data.Grocery);
   const [first, setFirst] = useState("");
@@ -106,7 +105,6 @@ export default function CartProvider({ children }) {
     const existingItem = checkoutItems.find(
       (checkoutItem) => checkoutItem.id === item.id
     );
-    console.log(existingItem,"108")
     if (existingItem) {
       setCheckoutItems((prevItems) =>
         prevItems.map((checkoutItem) =>
